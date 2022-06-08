@@ -1282,7 +1282,9 @@ int hvf_vcpu_exec(CPUState *cpu)
         break;
     case EC_AA64_SMC:
         cpu_synchronize_state(cpu);
-        if (arm_cpu->psci_conduit == QEMU_PSCI_CONDUIT_SMC) {
+        /* Lazy patch to boot Windows on ARM */
+//        if (arm_cpu->psci_conduit == QEMU_PSCI_CONDUIT_SMC) {
+        if (1) {
             advance_pc = true;
 
             if (!hvf_handle_psci_call(cpu)) {
